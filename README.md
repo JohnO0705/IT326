@@ -166,15 +166,6 @@ deadline seven days later. Restore clears the deletion fields. Permanently
 clearing Recently Deleted removes all deleted tasks for that account, including
 ones excluded by the current search or filter.
 
-### Updated class model
-
-`Task` and `Subtask` implement `ITask`. `TaskFilter` is used by the API for actual
-filtering and sorting. Service and repository classes coordinate sessions and
-database work around the domain classes.
-
-The implementation adds `isCompleted`, `createdAt`, and `updatedAt` to Task to
-support completion and sorting, plus a `TB_SESSIONS` support table. Reflect these
-decisions in the next class diagram and explanation.
 
 ## Database tables
 
@@ -225,21 +216,9 @@ and schema are implemented, but the live school database must still be verified
 from a computer with campus/VPN access. The Windows batch launcher also needs
 its first run on your Windows computer.
 
-## Continue in GitHub
+## Remaining UseCase
 
-This version was built from `JohnO0705/IT326` and retains its original class
-filenames. The download does not contain a `.git` directory. Copy its contents
-into your existing local clone on a new branch, review the changes, and run the
-application before committing. `.env`, local data, and virtual environments are
-excluded by `.gitignore`. This build has not pushed changes to the team repo.
-
-## Development credit
-
-This implementation was prepared with assistance from OpenAI Codex. The team
-should review, understand, adapt, and validate it and describe its own
-contributions and the AI assistance in the course documentation.
-
-Technical references:
-
-- [FastAPI security and password hashing](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/)
-- [Official python-oracledb connection documentation](https://python-oracledb.readthedocs.io/en/stable/user_guide/connection_handling.html)
+Accounts | Edit Account, Delete Account, Forgot Password |
+Subtasks | Add Subtask, Edit Subtask, Delete Subtask |
+Reminders | Set Reminder, Edit Reminder, Delete Reminder, including sending the scheduled emails |
+Export | Export Task, which saves the task list as a JSON file |
