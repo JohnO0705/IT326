@@ -7,5 +7,6 @@ data/
 *.db
 *.db-shm
 *.db-wal
+*.before-orm-*.bak
 *.log
 .DS_Store
