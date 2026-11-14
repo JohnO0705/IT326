@@ -7,9 +7,9 @@ from backend.database import DATABASE_ERRORS, Database
 
 
 def main() -> int:
+    database = None
     try:
-        settings = Settings.from_env()
-        database = Database(settings)
+        database = Database(Settings.from_env())
         for message in database.initialize_schema():
             print(message)
         print("Database setup complete.")
@@ -18,6 +18,9 @@ def main() -> int:
         print(f"Database setup could not finish: {error}", file=sys.stderr)
         print("For Oracle, check .env, the SID, and your campus/VPN connection.", file=sys.stderr)
         return 1
+    finally:
+        if database is not None:
+            database.close()
 
 
 if __name__ == "__main__":
